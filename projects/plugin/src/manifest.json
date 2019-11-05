@@ -1,6 +1,6 @@
 {
   "$schema": "../../../node_modules/@wako-app/mobile-sdk/dist/manifest-schema.json",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "id": "plugin.imdb",
   "name": "IMDb",
   "description": "Add a button to view the item on imdb",
@@ -13,9 +13,11 @@
   "entryPoint": "https://raw.githubusercontent.com/wako-app/imdb-addon/master/dist/plugin.js",
   "languages": {
     "en": "https://raw.githubusercontent.com/wako-app/imdb-addon/master/dist/i18n/en.json",
-    "fr": "https://raw.githubusercontent.com/wako-app/imdb-addon/master/dist/i18n/fr.json"
+    "fr": "https://raw.githubusercontent.com/wako-app/imdb-addon/master/dist/i18n/fr.json",
+    "it": "https://raw.githubusercontent.com/wako-app/imdb-addon/master/dist/i18n/it.json"
   },
   "changeLogs": {
+    "1.0.2": "Italian translation",
     "1.0.1": "New translation",
     "1.0.0": "Initial Version"
   }
