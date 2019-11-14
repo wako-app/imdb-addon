@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { BrowserService, Episode, Movie, Show } from '@wako-app/mobile-sdk';
+import { logEvent } from '../services/tools';
 
 @Component({
   selector: 'wk-open-button',
@@ -19,16 +20,19 @@ export class OpenButtonComponent {
   viewOnImdb() {
     if (this.movie && this.movie.imdbId) {
       this.browserService.open(`http://www.imdb.com/title/${this.movie.imdbId}/`, false);
+      logEvent('addon_tmdb', {type: 'movie'});
       return ;
     }
 
     if (this.show && this.episode && this.episode.imdbId) {
       this.browserService.open(`http://www.imdb.com/title/${this.episode.imdbId}/`, false);
+      logEvent('addon_tmdb', {type: 'episode'});
       return ;
     }
 
     if ((this.show && this.episode && this.show.imdbId) || (this.show && this.show.imdbId)) {
       this.browserService.open(`http://www.imdb.com/title/${this.show.imdbId}/`, false);
+      logEvent('addon_tmdb', {type: 'tv-show'});
       return ;
     }
 

@@ -1,6 +1,6 @@
 {
   "$schema": "../../../node_modules/@wako-app/mobile-sdk/dist/manifest-schema.json",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "id": "plugin.imdb",
   "name": "IMDb",
   "description": "Add a button to view the item on imdb",
@@ -17,7 +17,7 @@
     "it": "https://raw.githubusercontent.com/wako-app/imdb-addon/master/dist/i18n/it.json"
   },
   "changeLogs": {
-    "1.0.3": "Italian translation",
+    "1.0.4": "Italian translation",
     "1.0.1": "New translation",
     "1.0.0": "Initial Version"
   }
