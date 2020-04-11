@@ -1,1 +1,319 @@
-!function(e,n){"object"==typeof exports&&"object"==typeof module?module.exports=n(require("ng.common"),require("wako-app.mobile-sdk"),require("ngx-translate.core"),require("ng.core"),require("ionic.angular"),require("tslib"),require("ng.router"),require("ng.forms")):"function"==typeof define&&define.amd?define(["ng.common","wako-app.mobile-sdk","ngx-translate.core","ng.core","ionic.angular","tslib","ng.router","ng.forms"],n):"object"==typeof exports?exports.plugin=n(require("ng.common"),require("wako-app.mobile-sdk"),require("ngx-translate.core"),require("ng.core"),require("ionic.angular"),require("tslib"),require("ng.router"),require("ng.forms")):e.plugin=n(e["ng.common"],e["wako-app.mobile-sdk"],e["ngx-translate.core"],e["ng.core"],e["ionic.angular"],e.tslib,e["ng.router"],e["ng.forms"])}("undefined"!=typeof self?self:this,function(e,n,t,o,l,r,i,u){return function(e){var n={};function t(o){if(n[o])return n[o].exports;var l=n[o]={i:o,l:!1,exports:{}};return e[o].call(l.exports,l,l.exports,t),l.l=!0,l.exports}return t.m=e,t.c=n,t.d=function(e,n,o){t.o(e,n)||Object.defineProperty(e,n,{enumerable:!0,get:o})},t.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},t.t=function(e,n){if(1&n&&(e=t(e)),8&n)return e;if(4&n&&"object"==typeof e&&e&&e.__esModule)return e;var o=Object.create(null);if(t.r(o),Object.defineProperty(o,"default",{enumerable:!0,value:e}),2&n&&"string"!=typeof e)for(var l in e)t.d(o,l,(function(n){return e[n]}).bind(null,l));return o},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,n){return Object.prototype.hasOwnProperty.call(e,n)},t.p="",t(t.s=0)}({0:function(e,n,t){e.exports=t("zUnb")},"0S4P":function(n,t){n.exports=e},"17wl":function(e,n){e.exports=r},"3xDq":function(e,n){e.exports=u},FsH7:function(e,n,t){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var o=t("17wl"),l=t("vOrQ"),r=t("z1lQ"),i=t("TGDj");n.ToastService=function(){function e(e,n){this.toastCtrl=e,this.translateService=n}return e.prototype.simpleMessage=function(e,n,t,o){var l=this;void 0===t&&(t=2e3),void 0===o&&(o="top"),this.translateService.get(e,n).subscribe(function(e){l.toastCtrl.create({message:e,mode:"ios",position:o,duration:t}).then(function(e){e.present()})})},o.__decorate([l.Injectable(),o.__metadata("design:paramtypes",[r.ToastController,i.TranslateService])],e)}()},GoKE:function(e,n,t){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var o=t("17wl"),l=t("vOrQ"),r=t("z1lQ");n.BrowserService=function(){function e(e){this.platform=e}return e.prototype.open=function(e,n){void 0===n&&(n=!0),!1!==this.platform.is("cordova")&&n?SafariViewController.isAvailable(function(n){n?SafariViewController.show({url:e,hidden:!1,animated:!0,transition:"curl",enterReaderModeIfAvailable:!1,barColor:"#1f2d3f",tintColor:"#1f2d3f",controlTintColor:"#ffffff"}):window.open(e,"_system","location=yes")}):window.open(e,"_system","location=yes")},o.__decorate([l.Injectable(),o.__metadata("design:paramtypes",[r.Platform])],e)}()},JAnZ:function(e,n){e.exports=i},TGDj:function(e,n){e.exports=t},doF0:function(e,t){e.exports=n},vOrQ:function(e,n){e.exports=o},z1lQ:function(e,n){e.exports=l},zUnb:function(e,n,t){"use strict";t.r(n);var o=t("17wl"),l=t("doF0"),r=t("TGDj");function i(){for(var e=[],n=0;n<arguments.length;n++)e[n]=arguments[n];Object(l.wakoLog)("plugin.imdb",e)}function u(e,n){"FirebasePlugin"in window&&window.FirebasePlugin.logEvent(e,n)}var a=function(e){function n(n){var t=e.call(this)||this;return t.translate=n,t}return o.__extends(n,e),n.prototype.initialize=function(){i("plugin initialized")},n.prototype.afterInstall=function(){i("plugin installed")},n.prototype.afterUpdate=function(){i("plugin updated")},n.prototype.setTranslation=function(e,n){this.translate.setDefaultLang(e),this.translate.use(e),this.translate.setTranslation(e,n)},n}(l.PluginBaseService),s=function(e){function n(){return null!==e&&e.apply(this,arguments)||this}return o.__extends(n,e),n.prototype.setMovie=function(e){this.movie=e},n}(l.MovieDetailBaseComponent),d=function(e){function n(){return null!==e&&e.apply(this,arguments)||this}return o.__extends(n,e),n.prototype.setShowEpisode=function(e,n){this.show=e,this.episode=n},n}(l.EpisodeDetailBaseComponent),c=function(e){function n(){return null!==e&&e.apply(this,arguments)||this}return o.__extends(n,e),n.prototype.setShow=function(e){this.show=e},n}(l.ShowDetailBaseComponent),p=function(){function e(e){this.browserService=e,this.type="button"}return e.prototype.viewOnImdb=function(){return this.movie&&this.movie.imdbId?(this.browserService.open("http://www.imdb.com/title/"+this.movie.imdbId+"/",!1),void u("addon_tmdb",{type:"movie"})):this.show&&this.episode&&this.episode.imdbId?(this.browserService.open("http://www.imdb.com/title/"+this.episode.imdbId+"/",!1),void u("addon_tmdb",{type:"episode"})):this.show&&this.episode&&this.show.imdbId||this.show&&this.show.imdbId?(this.browserService.open("http://www.imdb.com/title/"+this.show.imdbId+"/",!1),void u("addon_tmdb",{type:"tv-show"})):void 0},e}(),f=function(e){function n(){return null!==e&&e.apply(this,arguments)||this}return o.__extends(n,e),n.pluginService=a,n.movieComponent=s,n.episodeComponent=d,n.showComponent=c,n}(l.PluginBaseModule),m=t("vOrQ"),v=t("z1lQ"),g=t("0S4P");t("JAnZ");var h=m["\u0275crt"]({encapsulation:2,styles:[],data:{}});function w(e){return m["\u0275vid"](2,[m["\u0275ncd"](null,0)],null,null)}var b=m["\u0275crt"]({encapsulation:2,styles:[],data:{}});function _(e){return m["\u0275vid"](2,[m["\u0275ncd"](null,0)],null,null)}var y=m["\u0275crt"]({encapsulation:2,styles:[],data:{}});function S(e){return m["\u0275vid"](2,[m["\u0275ncd"](null,0)],null,null)}var T=t("GoKE"),C=m["\u0275crt"]({encapsulation:0,styles:[[""]],data:{}});function x(e){return m["\u0275vid"](0,[(e()(),m["\u0275eld"](0,0,null,null,7,"ion-button",[["color","warning"],["expand","block"]],null,[[null,"click"]],function(e,n,t){var o=!0;return"click"===n&&(o=!1!==e.component.viewOnImdb()&&o),o},w,h)),m["\u0275did"](1,49152,null,0,v.IonButton,[m.ChangeDetectorRef,m.ElementRef,m.NgZone],{color:[0,"color"],expand:[1,"expand"]},null),(e()(),m["\u0275eld"](2,0,null,0,1,"ion-icon",[["name","film"],["slot","start"]],null,null,null,_,b)),m["\u0275did"](3,49152,null,0,v.IonIcon,[m.ChangeDetectorRef,m.ElementRef,m.NgZone],{name:[0,"name"]},null),(e()(),m["\u0275eld"](4,0,null,0,3,"ion-text",[],null,null,null,S,y)),m["\u0275did"](5,49152,null,0,v.IonText,[m.ChangeDetectorRef,m.ElementRef,m.NgZone],null,null),(e()(),m["\u0275ted"](6,0,["",""])),m["\u0275pid"](131072,r.TranslatePipe,[r.TranslateService,m.ChangeDetectorRef])],function(e,n){e(n,1,0,"warning","block"),e(n,3,0,"film")},function(e,n){e(n,6,0,m["\u0275unv"](n,6,0,m["\u0275nov"](n,7).transform("viewOnIMDb")))})}function M(e){return m["\u0275vid"](0,[(e()(),m["\u0275eld"](0,0,null,null,1,"wk-open-button",[],null,null,null,x,C)),m["\u0275did"](1,49152,null,0,p,[T.BrowserService],null,null)],null,null)}var I=m["\u0275ccf"]("wk-open-button",p,M,{movie:"movie",show:"show",episode:"episode",type:"type"},{},[]),k=m["\u0275crt"]({encapsulation:0,styles:[[""]],data:{}});function P(e){return m["\u0275vid"](0,[(e()(),m["\u0275eld"](0,0,null,null,1,"wk-open-button",[],null,null,null,x,C)),m["\u0275did"](1,49152,null,0,p,[T.BrowserService],{movie:[0,"movie"]},null)],function(e,n){e(n,1,0,n.component.movie)},null)}function D(e){return m["\u0275vid"](0,[(e()(),m["\u0275eld"](0,0,null,null,1,"ng-component",[],null,null,null,P,k)),m["\u0275did"](1,49152,null,0,s,[],null,null)],null,null)}var O=m["\u0275ccf"]("ng-component",s,D,{},{},[]),j=m["\u0275crt"]({encapsulation:0,styles:[[""]],data:{}});function E(e){return m["\u0275vid"](0,[(e()(),m["\u0275eld"](0,0,null,null,1,"wk-open-button",[],null,null,null,x,C)),m["\u0275did"](1,49152,null,0,p,[T.BrowserService],{show:[0,"show"],episode:[1,"episode"]},null)],function(e,n){var t=n.component;e(n,1,0,t.show,t.episode)},null)}function F(e){return m["\u0275vid"](0,[(e()(),m["\u0275eld"](0,0,null,null,1,"ng-component",[],null,null,null,E,j)),m["\u0275did"](1,49152,null,0,d,[],null,null)],null,null)}var q=m["\u0275ccf"]("ng-component",d,F,{},{},[]),R=m["\u0275crt"]({encapsulation:0,styles:[[""]],data:{}});function A(e){return m["\u0275vid"](0,[(e()(),m["\u0275eld"](0,0,null,null,1,"wk-open-button",[],null,null,null,x,C)),m["\u0275did"](1,49152,null,0,p,[T.BrowserService],{show:[0,"show"]},null)],function(e,n){e(n,1,0,n.component.show)},null)}function L(e){return m["\u0275vid"](0,[(e()(),m["\u0275eld"](0,0,null,null,1,"ng-component",[],null,null,null,A,R)),m["\u0275did"](1,49152,null,0,c,[],null,null)],null,null)}var B=m["\u0275ccf"]("ng-component",c,L,{},{},[]),N=t("3xDq"),z=t("FsH7"),U=m["\u0275cmf"](f,[],function(e){return m["\u0275mod"]([m["\u0275mpd"](512,m.ComponentFactoryResolver,m["\u0275CodegenComponentFactoryResolver"],[[8,[O,q,B,I]],[3,m.ComponentFactoryResolver],m.NgModuleRef]),m["\u0275mpd"](4608,g.NgLocalization,g.NgLocaleLocalization,[m.LOCALE_ID,[2,g["\u0275angular_packages_common_common_a"]]]),m["\u0275mpd"](4608,N["\u0275angular_packages_forms_forms_o"],N["\u0275angular_packages_forms_forms_o"],[]),m["\u0275mpd"](4608,v.AngularDelegate,v.AngularDelegate,[m.NgZone,m.ApplicationRef]),m["\u0275mpd"](4608,v.ModalController,v.ModalController,[v.AngularDelegate,m.ComponentFactoryResolver,m.Injector]),m["\u0275mpd"](4608,v.PopoverController,v.PopoverController,[v.AngularDelegate,m.ComponentFactoryResolver,m.Injector]),m["\u0275mpd"](5120,m.APP_INITIALIZER,function(e,n,t){return[v["\u0275e"](e,n,t)]},[v["\u0275a"],g.DOCUMENT,m.NgZone]),m["\u0275mpd"](4608,r.TranslateLoader,r.TranslateFakeLoader,[]),m["\u0275mpd"](4608,r.TranslateCompiler,r.TranslateFakeCompiler,[]),m["\u0275mpd"](4608,r.TranslateParser,r.TranslateDefaultParser,[]),m["\u0275mpd"](4608,r.MissingTranslationHandler,r.FakeMissingTranslationHandler,[]),m["\u0275mpd"](4608,r.TranslateStore,r.TranslateStore,[]),m["\u0275mpd"](4608,r.TranslateService,r.TranslateService,[r.TranslateStore,r.TranslateLoader,r.TranslateCompiler,r.TranslateParser,r.MissingTranslationHandler,r.USE_DEFAULT_LANG,r.USE_STORE]),m["\u0275mpd"](4608,a,a,[r.TranslateService]),m["\u0275mpd"](4608,T.BrowserService,T.BrowserService,[v.Platform]),m["\u0275mpd"](4608,z.ToastService,z.ToastService,[v.ToastController,r.TranslateService]),m["\u0275mpd"](1073742336,g.CommonModule,g.CommonModule,[]),m["\u0275mpd"](1073742336,N["\u0275angular_packages_forms_forms_d"],N["\u0275angular_packages_forms_forms_d"],[]),m["\u0275mpd"](1073742336,N.FormsModule,N.FormsModule,[]),m["\u0275mpd"](1073742336,v.IonicModule,v.IonicModule,[]),m["\u0275mpd"](1073742336,r.TranslateModule,r.TranslateModule,[]),m["\u0275mpd"](1073742336,f,f,[]),m["\u0275mpd"](256,v["\u0275a"],void 0,[]),m["\u0275mpd"](256,r.USE_STORE,void 0,[]),m["\u0275mpd"](256,r.USE_DEFAULT_LANG,void 0,[])])});t.d(n,"PluginModule",function(){return f}),t.d(n,"PluginModuleNgFactory",function(){return U}),n.default=U}})});
+!(function (e, t) {
+  'object' == typeof exports && 'object' == typeof module
+    ? (module.exports = t(
+        require('ng.common'),
+        require('tslib'),
+        require('ng.forms'),
+        require('ngx-translate.core'),
+        require('wako-app.mobile-sdk'),
+        require('ng.core'),
+        require('ionic.angular')
+      ))
+    : 'function' == typeof define && define.amd
+    ? define(['ng.common', 'tslib', 'ng.forms', 'ngx-translate.core', 'wako-app.mobile-sdk', 'ng.core', 'ionic.angular'], t)
+    : 'object' == typeof exports
+    ? (exports.plugin = t(
+        require('ng.common'),
+        require('tslib'),
+        require('ng.forms'),
+        require('ngx-translate.core'),
+        require('wako-app.mobile-sdk'),
+        require('ng.core'),
+        require('ionic.angular')
+      ))
+    : (e.plugin = t(
+        e['ng.common'],
+        e.tslib,
+        e['ng.forms'],
+        e['ngx-translate.core'],
+        e['wako-app.mobile-sdk'],
+        e['ng.core'],
+        e['ionic.angular']
+      ));
+})('undefined' != typeof self ? self : this, function (e, t, n, o, i, r, s) {
+  return (function (e) {
+    var t = {};
+    function n(o) {
+      if (t[o]) return t[o].exports;
+      var i = (t[o] = { i: o, l: !1, exports: {} });
+      return e[o].call(i.exports, i, i.exports, n), (i.l = !0), i.exports;
+    }
+    return (
+      (n.m = e),
+      (n.c = t),
+      (n.d = function (e, t, o) {
+        n.o(e, t) || Object.defineProperty(e, t, { enumerable: !0, get: o });
+      }),
+      (n.r = function (e) {
+        'undefined' != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, { value: 'Module' }),
+          Object.defineProperty(e, '__esModule', { value: !0 });
+      }),
+      (n.t = function (e, t) {
+        if ((1 & t && (e = n(e)), 8 & t)) return e;
+        if (4 & t && 'object' == typeof e && e && e.__esModule) return e;
+        var o = Object.create(null);
+        if ((n.r(o), Object.defineProperty(o, 'default', { enumerable: !0, value: e }), 2 & t && 'string' != typeof e))
+          for (var i in e)
+            n.d(
+              o,
+              i,
+              function (t) {
+                return e[t];
+              }.bind(null, i)
+            );
+        return o;
+      }),
+      (n.n = function (e) {
+        var t =
+          e && e.__esModule
+            ? function () {
+                return e.default;
+              }
+            : function () {
+                return e;
+              };
+        return n.d(t, 'a', t), t;
+      }),
+      (n.o = function (e, t) {
+        return Object.prototype.hasOwnProperty.call(e, t);
+      }),
+      (n.p = ''),
+      n((n.s = 0))
+    );
+  })({
+    0: function (e, t, n) {
+      e.exports = n('zUnb');
+    },
+    '0S4P': function (t, n) {
+      t.exports = e;
+    },
+    '17wl': function (e, n) {
+      e.exports = t;
+    },
+    '3xDq': function (e, t) {
+      e.exports = n;
+    },
+    TGDj: function (e, t) {
+      e.exports = o;
+    },
+    doF0: function (e, t) {
+      e.exports = i;
+    },
+    vOrQ: function (e, t) {
+      e.exports = r;
+    },
+    z1lQ: function (e, t) {
+      e.exports = s;
+    },
+    zUnb: function (e, t, n) {
+      'use strict';
+      n.r(t),
+        n.d(t, 'PluginModule', function () {
+          return g;
+        });
+      var o = n('17wl'),
+        i = n('0S4P'),
+        r = n('z1lQ'),
+        s = n('doF0'),
+        u = n('TGDj');
+      function c() {
+        for (var e = [], t = 0; t < arguments.length; t++) e[t] = arguments[t];
+        Object(s.wakoLog)('plugin.imdb', e);
+      }
+      function p(e, t) {
+        'FirebasePlugin' in window && window.FirebasePlugin.logEvent(e, t);
+      }
+      var l = n('vOrQ'),
+        a = (function (e) {
+          function t(t) {
+            var n = e.call(this) || this;
+            return (n.translate = t), n;
+          }
+          return (
+            Object(o.__extends)(t, e),
+            (t.prototype.initialize = function () {
+              c('plugin initialized');
+            }),
+            (t.prototype.afterInstall = function () {
+              c('plugin installed');
+            }),
+            (t.prototype.afterUpdate = function () {
+              c('plugin updated');
+            }),
+            (t.prototype.setTranslation = function (e, t) {
+              this.translate.setDefaultLang(e), this.translate.use(e), this.translate.setTranslation(e, t);
+            }),
+            (t.prototype.customAction = function (e, t) {}),
+            (t.ɵfac = function (e) {
+              return new (e || t)(l['\u0275\u0275inject'](u.TranslateService));
+            }),
+            (t.ɵprov = l['\u0275\u0275defineInjectable']({ token: t, factory: t.ɵfac })),
+            t
+          );
+        })(s.PluginBaseService),
+        d = (function () {
+          function e() {
+            this.type = 'button';
+          }
+          return (
+            (e.prototype.viewOnImdb = function () {
+              return this.movie && this.movie.imdbId
+                ? (s.BrowserService.open('http://www.imdb.com/title/' + this.movie.imdbId + '/', !1),
+                  void p('addon_tmdb', { type: 'movie' }))
+                : this.show && this.episode && this.episode.imdbId
+                ? (s.BrowserService.open('http://www.imdb.com/title/' + this.episode.imdbId + '/', !1),
+                  void p('addon_tmdb', { type: 'episode' }))
+                : (this.show && this.episode && this.show.imdbId) || (this.show && this.show.imdbId)
+                ? (s.BrowserService.open('http://www.imdb.com/title/' + this.show.imdbId + '/', !1),
+                  void p('addon_tmdb', { type: 'tv-show' }))
+                : void 0;
+            }),
+            (e.ɵfac = function (t) {
+              return new (t || e)();
+            }),
+            (e.ɵcmp = l['\u0275\u0275defineComponent']({
+              type: e,
+              selectors: [['wk-open-button']],
+              inputs: { movie: 'movie', show: 'show', episode: 'episode', type: 'type' },
+              decls: 5,
+              vars: 3,
+              consts: [
+                ['expand', 'block', 'color', 'warning', 3, 'click'],
+                ['name', 'film', 'slot', 'start']
+              ],
+              template: function (e, t) {
+                1 & e &&
+                  (l['\u0275\u0275elementStart'](0, 'ion-button', 0),
+                  l['\u0275\u0275listener']('click', function () {
+                    return t.viewOnImdb();
+                  }),
+                  l['\u0275\u0275element'](1, 'ion-icon', 1),
+                  l['\u0275\u0275elementStart'](2, 'ion-text'),
+                  l['\u0275\u0275text'](3),
+                  l['\u0275\u0275pipe'](4, 'translate'),
+                  l['\u0275\u0275elementEnd'](),
+                  l['\u0275\u0275elementEnd']()),
+                  2 & e && (l['\u0275\u0275advance'](3), l['\u0275\u0275textInterpolate'](l['\u0275\u0275pipeBind1'](4, 1, 'viewOnIMDb')));
+              },
+              directives: [r.IonButton, r.IonIcon, r.IonText],
+              pipes: [u.TranslatePipe],
+              styles: ['']
+            })),
+            e
+          );
+        })(),
+        f = (function (e) {
+          function t() {
+            return (null !== e && e.apply(this, arguments)) || this;
+          }
+          return (
+            Object(o.__extends)(t, e),
+            (t.prototype.setMovie = function (e) {
+              this.movie = e;
+            }),
+            (t.ɵfac = function (e) {
+              return m(e || t);
+            }),
+            (t.ɵcmp = l['\u0275\u0275defineComponent']({
+              type: t,
+              selectors: [['ng-component']],
+              features: [l['\u0275\u0275InheritDefinitionFeature']],
+              decls: 1,
+              vars: 1,
+              consts: [[3, 'movie']],
+              template: function (e, t) {
+                1 & e && l['\u0275\u0275element'](0, 'wk-open-button', 0), 2 & e && l['\u0275\u0275property']('movie', t.movie);
+              },
+              directives: [d],
+              styles: ['']
+            })),
+            t
+          );
+        })(s.MovieDetailBaseComponent),
+        m = l['\u0275\u0275getInheritedFactory'](f),
+        h = (function (e) {
+          function t() {
+            return (null !== e && e.apply(this, arguments)) || this;
+          }
+          return (
+            Object(o.__extends)(t, e),
+            (t.prototype.setShowEpisode = function (e, t) {
+              (this.show = e), (this.episode = t);
+            }),
+            (t.ɵfac = function (e) {
+              return b(e || t);
+            }),
+            (t.ɵcmp = l['\u0275\u0275defineComponent']({
+              type: t,
+              selectors: [['ng-component']],
+              features: [l['\u0275\u0275InheritDefinitionFeature']],
+              decls: 1,
+              vars: 2,
+              consts: [[3, 'show', 'episode']],
+              template: function (e, t) {
+                1 & e && l['\u0275\u0275element'](0, 'wk-open-button', 0),
+                  2 & e && l['\u0275\u0275property']('show', t.show)('episode', t.episode);
+              },
+              directives: [d],
+              styles: ['']
+            })),
+            t
+          );
+        })(s.EpisodeDetailBaseComponent),
+        b = l['\u0275\u0275getInheritedFactory'](h),
+        w = n('3xDq'),
+        y = (function (e) {
+          function t() {
+            return (null !== e && e.apply(this, arguments)) || this;
+          }
+          return (
+            Object(o.__extends)(t, e),
+            (t.prototype.setShow = function (e) {
+              this.show = e;
+            }),
+            (t.ɵfac = function (e) {
+              return v(e || t);
+            }),
+            (t.ɵcmp = l['\u0275\u0275defineComponent']({
+              type: t,
+              selectors: [['ng-component']],
+              features: [l['\u0275\u0275InheritDefinitionFeature']],
+              decls: 1,
+              vars: 1,
+              consts: [[3, 'show']],
+              template: function (e, t) {
+                1 & e && l['\u0275\u0275element'](0, 'wk-open-button', 0), 2 & e && l['\u0275\u0275property']('show', t.show);
+              },
+              directives: [d],
+              styles: ['']
+            })),
+            t
+          );
+        })(s.ShowDetailBaseComponent),
+        v = l['\u0275\u0275getInheritedFactory'](y),
+        g = (function (e) {
+          function t() {
+            return (null !== e && e.apply(this, arguments)) || this;
+          }
+          return (
+            Object(o.__extends)(t, e),
+            (t.pluginService = a),
+            (t.movieComponent = f),
+            (t.episodeComponent = h),
+            (t.showComponent = y),
+            (t.ɵmod = l['\u0275\u0275defineNgModule']({ type: t })),
+            (t.ɵinj = l['\u0275\u0275defineInjector']({
+              factory: function (e) {
+                return x(e || t);
+              },
+              providers: [a],
+              imports: [[i.CommonModule, w.FormsModule, r.IonicModule.forRoot(), u.TranslateModule.forRoot()]]
+            })),
+            t
+          );
+        })(s.PluginBaseModule),
+        x = l['\u0275\u0275getInheritedFactory'](g);
+      t.default = g;
+    }
+  });
+});

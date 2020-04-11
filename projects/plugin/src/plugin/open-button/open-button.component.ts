@@ -13,28 +13,25 @@ export class OpenButtonComponent {
   @Input() episode: Episode;
   @Input() type: 'button' = 'button';
 
-  constructor(private browserService: BrowserService) {
-
-  }
+  constructor() {}
 
   viewOnImdb() {
     if (this.movie && this.movie.imdbId) {
-      this.browserService.open(`http://www.imdb.com/title/${this.movie.imdbId}/`, false);
-      logEvent('addon_tmdb', {type: 'movie'});
-      return ;
+      BrowserService.open(`http://www.imdb.com/title/${this.movie.imdbId}/`, false);
+      logEvent('addon_tmdb', { type: 'movie' });
+      return;
     }
 
     if (this.show && this.episode && this.episode.imdbId) {
-      this.browserService.open(`http://www.imdb.com/title/${this.episode.imdbId}/`, false);
-      logEvent('addon_tmdb', {type: 'episode'});
-      return ;
+      BrowserService.open(`http://www.imdb.com/title/${this.episode.imdbId}/`, false);
+      logEvent('addon_tmdb', { type: 'episode' });
+      return;
     }
 
     if ((this.show && this.episode && this.show.imdbId) || (this.show && this.show.imdbId)) {
-      this.browserService.open(`http://www.imdb.com/title/${this.show.imdbId}/`, false);
-      logEvent('addon_tmdb', {type: 'tv-show'});
-      return ;
+      BrowserService.open(`http://www.imdb.com/title/${this.show.imdbId}/`, false);
+      logEvent('addon_tmdb', { type: 'tv-show' });
+      return;
     }
-
   }
 }

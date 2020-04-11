@@ -5,12 +5,9 @@
   "name": "IMDb",
   "description": "Add a button to view the item on imdb",
   "author": "wako",
-  "actions": [
-    "movies",
-    "episodes",
-    "shows"
-  ],
-  "entryPoint": "https://raw.githubusercontent.com/wako-app/imdb-addon/master/dist/plugin.js",
+  "actions": ["movies", "episodes", "shows"],
+  "entryPointV2": "https://raw.githubusercontent.com/wako-app/imdb-addon/master/dist/plugin.js",
+  "entryPoint": "https://raw.githubusercontent.com/wako-app/imdb-addon/wako3/dist/plugin.js",
   "languages": {
     "en": "https://raw.githubusercontent.com/wako-app/imdb-addon/master/dist/i18n/en.json",
     "fr": "https://raw.githubusercontent.com/wako-app/imdb-addon/master/dist/i18n/fr.json",
