@@ -5,7 +5,7 @@ import { logEvent } from '../services/tools';
 @Component({
   selector: 'wk-open-button',
   templateUrl: './open-button.component.html',
-  styleUrls: ['./open-button.component.scss']
+  styleUrls: ['./open-button.component.scss'],
 })
 export class OpenButtonComponent {
   @Input() movie: Movie;
@@ -16,20 +16,20 @@ export class OpenButtonComponent {
   constructor() {}
 
   viewOnImdb() {
-    if (this.movie && this.movie.imdbId) {
-      BrowserService.open(`http://www.imdb.com/title/${this.movie.imdbId}/`, false);
+    if (this.movie && this.movie.ids.imdb) {
+      BrowserService.open(`http://www.imdb.com/title/${this.movie.ids.imdb}/`, false);
       logEvent('addon_tmdb', { type: 'movie' });
       return;
     }
 
-    if (this.show && this.episode && this.episode.imdbId) {
-      BrowserService.open(`http://www.imdb.com/title/${this.episode.imdbId}/`, false);
+    if (this.show && this.episode && this.episode.ids.imdb) {
+      BrowserService.open(`http://www.imdb.com/title/${this.episode.ids.imdb}/`, false);
       logEvent('addon_tmdb', { type: 'episode' });
       return;
     }
 
-    if ((this.show && this.episode && this.show.imdbId) || (this.show && this.show.imdbId)) {
-      BrowserService.open(`http://www.imdb.com/title/${this.show.imdbId}/`, false);
+    if ((this.show && this.episode && this.show.ids.imdb) || (this.show && this.show.ids.imdb)) {
+      BrowserService.open(`http://www.imdb.com/title/${this.show.ids.imdb}/`, false);
       logEvent('addon_tmdb', { type: 'tv-show' });
       return;
     }
