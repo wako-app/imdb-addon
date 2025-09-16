@@ -15,10 +15,8 @@ import { ShowButtonComponent } from './show-button/show-button.component';
 const components = [MovieButtonComponent, EpisodeButtonComponent, ShowButtonComponent, OpenButtonComponent];
 
 @NgModule({
-  imports: [CommonModule, FormsModule, IonicModule.forRoot(), TranslateModule.forRoot()],
-  declarations: [...components],
-  entryComponents: [...components],
-  providers: [PluginService], // Add your services here. Do not use provideIn: 'root' in your services
+    imports: [CommonModule, FormsModule, IonicModule.forRoot(), TranslateModule.forRoot(), ...components],
+    providers: [PluginService], // Add your services here. Do not use provideIn: 'root' in your services
 })
 export class PluginModule extends PluginBaseModule {
   static override pluginService = PluginService;

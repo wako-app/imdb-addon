@@ -1,11 +1,13 @@
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { Movie } from '@wako-app/mobile-sdk';
 import { PluginLoaderService } from '../services/plugin-loader.service';
+import { IonicModule } from '@ionic/angular';
 
 @Component({
-  selector: 'app-tab1',
-  templateUrl: 'movie.page.html',
-  styleUrls: ['movie.page.scss'],
+    selector: 'app-tab1',
+    templateUrl: 'movie.page.html',
+    styleUrls: ['movie.page.scss'],
+    imports: [IonicModule]
 })
 export class MoviePage implements OnInit {
   @ViewChild('movieRef', { read: ViewContainerRef, static: true })

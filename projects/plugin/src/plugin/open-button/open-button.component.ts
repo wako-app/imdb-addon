@@ -1,11 +1,14 @@
 import { Component, Input } from '@angular/core';
 import { BrowserService, Episode, Movie, Show } from '@wako-app/mobile-sdk';
 import { logEvent } from '../services/tools';
+import { IonicModule } from '@ionic/angular';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'wk-open-button',
-  templateUrl: './open-button.component.html',
-  styleUrls: ['./open-button.component.scss'],
+    selector: 'wk-open-button',
+    templateUrl: './open-button.component.html',
+    styleUrls: ['./open-button.component.scss'],
+    imports: [IonicModule, TranslateModule]
 })
 export class OpenButtonComponent {
   @Input() movie: Movie;
